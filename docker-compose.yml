@@ -3,6 +3,10 @@ services:
 
   psql-poc:
     build: /
+    image: psql-poc
+    ports:
+     - 5432:5432
+    container_name: psql-poc
     depends_on:
       - postgres
     restart: always
