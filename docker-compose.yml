@@ -1,34 +1,35 @@
-version: "3"
+version: '3'
+
 services:
 
+#Governing microservices
   psql-poc:
-    build: /
-    image: psql-poc
-    ports:
-     - 5432:5432
-    container_name: psql-poc
-    depends_on:
-      - postgres
-    restart: always
-    network_mode: "host"
-    hostname: localhost
-    ports:
-     - "8091:8091"
-    healthcheck:
-     test: "exit 0"
+   build:
+     context: .
+     dockerfile: Dockerfile
+#     image: psql-poc
+   depends_on:
+    - postgres
+   restart: always
+   network_mode: "host"
+   hostname: localhost
+   ports:
+    - 8091:8091
+   healthcheck:
+    test: "exit 0"
 
-  postgres:
+postgres:
     image: postgres
     ports:
      - 5432:5432
     container_name: postgres
-    resources:
-        limits:
-          cpus: '0.50'
-          memory: 50M
-        reservations:
-          cpus: '0.25'
-          memory: 20M
+#    resources:
+#        limits:
+#          cpus: '0.50'
+#          memory: 50M
+#        reservations:
+#          cpus: '0.25'
+#          memory: 20M
     environment: 
      - POSTGRES_DB=testdb
     network_mode: "host"
