@@ -6,8 +6,8 @@ services:
   psql-poc:
    build:
      context: .
-     dockerfile: Dockerfile
-#     image: psql-poc
+     #dockerfile: Dockerfile
+   container_name : sakethmaringanti/psql-poc:1.0
    depends_on:
     - postgres
    restart: always
@@ -30,6 +30,8 @@ postgres:
 #        reservations:
 #          cpus: '0.25'
 #          memory: 20M
+    volumes:
+     - ./postgres-data:/var/lib/postgresql/data
     environment: 
      - POSTGRES_DB=testdb
     network_mode: "host"
