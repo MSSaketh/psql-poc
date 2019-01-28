@@ -10,4 +10,6 @@ public interface CompanyRepository extends CrudRepository<Company, Integer> {
 	
 	public Company getByCompanyName(String companyName);
 
+	public Company getByCompanyId(int companyId);
+
 }

@@ -1,5 +1,7 @@
 package com.capgemini.company.domain;
 
+import java.io.File;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,15 +14,17 @@ public class Company {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int companyId;
 	private String companyName;
+	private File file;
 
 	public Company() {
 		super();
 	}
 
-	public Company(int companyId, String companyName) {
+	public Company(int companyId, String companyName, File file) {
 		super();
 		this.companyId = companyId;
 		this.companyName = companyName;
+		this.file = file;
 	}
 
 	public int getCompanyId() {
@@ -37,6 +41,14 @@ public class Company {
 
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
+	}
+
+	public File getFile() {
+		return file;
+	}
+
+	public void setFile(File file) {
+		this.file = file;
 	}
 
 }

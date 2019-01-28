@@ -6,6 +6,12 @@ spring:
     password: smaringa
     url: jdbc:mysql://localhost:3306/testdb?useSSL=false
     username: root
+    
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 5MB
+      max-request-size: 5MB
   jpa:
     database-platform: org.hibernate.dialect.MySQL5Dialect
     generate-ddl: true
