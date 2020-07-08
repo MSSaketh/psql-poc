@@ -1,3 +1,5 @@
+version: '3'
+
 services:
 
 #Governing microservices
@@ -16,24 +18,24 @@ services:
    healthcheck:
     test: "exit 0"
 
-    postgres:
-        image: postgres
-        ports:
-         - 5432:5432
-        container_name: postgres
-    #    resources:
-    #        limits:
-    #          cpus: '0.50'
-    #          memory: 50M
-    #        reservations:
-    #          cpus: '0.25'
-    #          memory: 20M
-        volumes:
-         - ./postgres-data:/var/lib/postgresql/data
-        environment: 
-         - POSTGRES_DB=testdb
-        network_mode: "host"
-        hostname: localhost
-        restart: always
-        healthcheck:
-         test: "exit 0"
+  postgres:
+   image: postgres
+     ports:
+      - 5432:5432
+   container_name: postgres
+#    resources:
+#        limits:
+#          cpus: '0.50'
+#          memory: 50M
+#        reservations:
+#          cpus: '0.25'
+#          memory: 20M
+   volumes:
+    - ./postgres-data:/var/lib/postgresql/data
+   environment: 
+     - POSTGRES_DB=testdb
+   network_mode: "host"
+   hostname: localhost
+   restart: always
+   healthcheck:
+    test: "exit 0"
